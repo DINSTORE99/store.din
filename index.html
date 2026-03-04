@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Pindah</title>
+
+  <meta http-equiv="refresh" content="5; url=https://order.vpn.dinn.my.id">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+      background-size: 200% 200%;
+      animation: bgMove 8s ease infinite;
+      color: white;
+      text-align: center;
+    }
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 45px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .count {
+      font-size: 26px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 25px;
+      border-radius: 12px;
+      background: #38bdf8;
+      color: #0f172a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #0ea5e9;
+      transform: translateY(-3px);
+    }
+
+    .small {
+      margin-top: 15px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Website Telah Pindah 🚀</h1>
+
+    <p>
+      Kami sekarang menggunakan domain baru:<br>
+      <strong>order.vpn.dinn.my.id</strong><br><br>
+      Mengarahkan dalam <span class="count" id="countdown">5</span> detik...
+    </p>
+
+    <a href="https://order.vpn.dinn.my.id" class="btn">
+      Kunjungi Sekarang
+    </a>
+
+    <div class="small">
+      Jika tidak otomatis, klik tombol di atas.
+    </div>
+  </div>
+
+  <script>
+    let time = 5;
+    const countdown = document.getElementById("countdown");
+
+    const interval = setInterval(() => {
+      time--;
+      countdown.textContent = time;
+
+      if (time <= 0) {
+        clearInterval(interval);
+        window.location.href = "https://order.vpn.dinn.my.id";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
