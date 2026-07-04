@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #0b0f1a;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* STAR BACKGROUND */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(2px 2px at 10% 20%, #fff, transparent),
+        radial-gradient(2px 2px at 50% 40%, #fff, transparent),
+        radial-gradient(1px 1px at 80% 60%, #fff, transparent);
+    animation: moveStars 80s linear infinite;
+    z-index: -2;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-300px); }
+}
+
+/* METEOR */
+.meteor {
+    position: fixed;
+    top: -50px;
+    left: -100px;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(white, transparent);
+    animation: fall 8s linear infinite;
+    z-index: -1;
+}
+
+@keyframes fall {
+    0% { transform: translate(-200px,-200px); opacity:0; }
+    10% { opacity:1; }
+    100% { transform: translate(800px,800px); opacity:0; }
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0,255,200,0.15);
+}
+
+/* TITLE */
+.title span {
+    font-size: 34px;
+    font-weight: 900;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+/* LINK BUTTON */
+.link {
+    display: block;
+    margin: 12px 0;
+    padding: 15px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+
+    background: linear-gradient(270deg,#00ffcc,#00ff99,#00ccff);
+    background-size: 400% 400%;
+    animation: glow 6s ease infinite;
+    transition: 0.3s;
+}
+
+.link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00ff99;
+}
+
+@keyframes glow {
+    0% { background-position:0%; }
+    50% { background-position:100%; }
+    100% { background-position:0%; }
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #00ffcc;
+}
