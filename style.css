@@ -1,105 +1,218 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background: #0b0f1a;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050816;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+    position:relative;
 }
 
-/* STAR BACKGROUND */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
+/* Background */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
     background:
-        radial-gradient(2px 2px at 10% 20%, #fff, transparent),
-        radial-gradient(2px 2px at 50% 40%, #fff, transparent),
-        radial-gradient(1px 1px at 80% 60%, #fff, transparent);
-    animation: moveStars 80s linear infinite;
-    z-index: -2;
+    radial-gradient(circle at top,#1e3a8a 0%,transparent 40%),
+    radial-gradient(circle at bottom,#0ea5e9 0%,transparent 35%),
+    linear-gradient(180deg,#050816,#091126,#050816);
+    z-index:-4;
 }
 
-@keyframes moveStars {
-    from { transform: translateY(0); }
-    to { transform: translateY(-300px); }
+/* Stars */
+.stars{
+    position:fixed;
+    inset:0;
+    background-image:
+    radial-gradient(#fff 1px,transparent 1px),
+    radial-gradient(#00eaff 1px,transparent 1px),
+    radial-gradient(#00ff99 1px,transparent 1px);
+    background-size:120px 120px,180px 180px,260px 260px;
+    animation:stars 70s linear infinite;
+    opacity:.6;
+    z-index:-3;
 }
 
-/* METEOR */
-.meteor {
-    position: fixed;
-    top: -50px;
-    left: -100px;
-    width: 2px;
-    height: 80px;
-    background: linear-gradient(white, transparent);
-    animation: fall 8s linear infinite;
-    z-index: -1;
+@keyframes stars{
+    from{transform:translateY(0);}
+    to{transform:translateY(-500px);}
 }
 
-@keyframes fall {
-    0% { transform: translate(-200px,-200px); opacity:0; }
-    10% { opacity:1; }
-    100% { transform: translate(800px,800px); opacity:0; }
+/* Meteor */
+.meteor{
+    position:fixed;
+    width:2px;
+    height:140px;
+    background:linear-gradient(#fff,transparent);
+    transform:rotate(45deg);
+    opacity:0;
+    animation:meteor 7s linear infinite;
 }
 
-/* CONTAINER */
-.container {
-    width: 90%;
-    max-width: 420px;
-    padding: 25px;
-    border-radius: 18px;
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(10px);
-    text-align: center;
-    box-shadow: 0 0 25px rgba(0,255,200,0.15);
+.meteor:nth-child(2){
+    animation-delay:3s;
+    left:65%;
 }
 
-/* TITLE */
-.title span {
-    font-size: 34px;
-    font-weight: 900;
-    color: #00ffcc;
-    text-shadow: 0 0 10px #00ffcc;
+@keyframes meteor{
+    0%{
+        opacity:0;
+        transform:translate(-250px,-250px) rotate(45deg);
+    }
+    15%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+        transform:translate(1000px,1000px) rotate(45deg);
+    }
 }
 
-/* LINK BUTTON */
-.link {
-    display: block;
-    margin: 12px 0;
-    padding: 15px;
-    border-radius: 14px;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
+/* Card */
+.container{
+    width:92%;
+    max-width:430px;
+    padding:35px 25px;
+    border-radius:25px;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:
+        0 0 30px rgba(0,255,255,.15),
+        0 20px 60px rgba(0,0,0,.45);
+    text-align:center;
+}
 
-    background: linear-gradient(270deg,#00ffcc,#00ff99,#00ccff);
+/* Logo */
+.logo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid #00eaff;
+    margin:auto;
+    display:block;
+    box-shadow:0 0 25px #00eaff;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+.title{
+    margin-top:18px;
+    font-size:34px;
+    font-weight:800;
+    background:linear-gradient(90deg,#00eaff,#00ff99,#fff200);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.desc{
+    color:#bfc9d9;
+    margin-top:8px;
+    margin-bottom:30px;
+    font-size:14px;
+}
+
+/* Button */
+.buttons{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 18px;
+    border-radius:16px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    color:#fff;
+    text-decoration:none;
+    transition:.35s;
+    backdrop-filter:blur(10px);
+}
+
+.link i:first-child{
+    width:35px;
+    font-size:20px;
+    color:#00eaff;
+}
+
+.link span{
+    flex:1;
+    text-align:left;
+    font-weight:600;
+}
+
+.link:hover{
+    transform:translateY(-4px) scale(1.02);
+    background:linear-gradient(90deg,#00b4ff,#00ff99);
+    box-shadow:0 0 25px rgba(0,255,200,.5);
+}
+
+.link:hover i,
+.link:hover span{
+    color:#fff;
+}
+
+/* Footer */
+footer{
+    margin-top:30px;
+}
+
+footer p{
+    font-size:14px;
+    font-weight:600;
+}
+
+footer small{
+    color:#9fb0c5;
+    display:block;
+    margin-top:5px;
+}
+
+/* Responsive */
+@media(max-width:480px){
+
+.logo{
+    width:90px;
+    height:90px;
+}
+
+.title{
+    font-size:28px;
+}
+
+.link{
+    padding:14px;
+}
+
+}
+.link.bot {
+    background: linear-gradient(270deg, #00c6ff, #0072ff, #00c6ff);
     background-size: 400% 400%;
-    animation: glow 6s ease infinite;
-    transition: 0.3s;
+    animation: neonMove 6s ease infinite, breathing 3s ease-in-out infinite;
 }
 
-.link:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #00ff99;
-}
-
-@keyframes glow {
-    0% { background-position:0%; }
-    50% { background-position:100%; }
-    100% { background-position:0%; }
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #00ffcc;
+.link.bot:hover {
+    box-shadow: 0 0 25px #00c6ff;
 }
